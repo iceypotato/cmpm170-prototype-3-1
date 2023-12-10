@@ -26,6 +26,9 @@ public partial class Lamp : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(this.Lbl is not null) {
+			this.Lbl.Position = this.Position + (new Vector2(0, -400));
+		}
 		ProcessInput();
 	}
 	
@@ -39,11 +42,13 @@ public partial class Lamp : Area2D
 			{
 				image = GD.Load<Texture2D>("res://assets/lamp off.png");
 				_isLampOn = false;
+				this.Lbl.Show();
 			}
 			else
 			{
 				image = GD.Load<Texture2D>("res://assets/lamp on.png");
 				_isLampOn = true;
+				this.Lbl.Hide();
 			}
 			sprite.Texture = image;
 			GD.Print(Lbl.Text);
