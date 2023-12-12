@@ -64,7 +64,8 @@ public partial class Letters : Node2D
 			label.Text = fullText[i].ToString();
 			label.Name = "Char" + i;
 			label.LabelSettings = new LabelSettings();
-			label.LabelSettings.FontSize = 36;
+			label.LabelSettings.FontSize = 100;
+			label.LabelSettings.Font = GD.Load<FontFile>("res://assets/Constellation-Awlx.ttf");
 			AddChild(label);
 
 			_lamp = GetNode<Lamp>("../Lamps/Lamp" + i);

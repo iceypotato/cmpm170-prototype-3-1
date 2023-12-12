@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cmpm Prototype 3-1", "Cmpm Prototype 3-1.csproj", "{D9D49493-E121-4C78-87DA-E228586EBDE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMPM 170 Prototype 3-1", "CMPM 170 Prototype 3-1.csproj", "{D9D49493-E121-4C78-87DA-E228586EBDE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

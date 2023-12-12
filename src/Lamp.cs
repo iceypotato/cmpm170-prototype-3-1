@@ -34,7 +34,7 @@ public partial class Lamp : Area2D
 	
 	public void OnInput(Node viewport, InputEvent @event, long shape_idx)
 	{
-		if (Input.IsActionPressed("mouse1"))
+		if (Input.IsActionJustPressed("mouse1"))
 		{
 			var sprite = GetNode<Sprite2D>("Lamp");
 			Texture2D image;
