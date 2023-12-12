@@ -73,8 +73,43 @@ public partial class Letters : Node2D
 		}
 	}
 
+	private const double AnimTime = 1.0;
+	private double animLeft = 0.0;
+	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		string enabledText = "";
+		for (int i = 0; i < 10; i++)
+		{
+			var lamp = GetNode<Lamp>("../Lamps/Lamp" + i);
+
+			if (!lamp.IsLampOn)
+				enabledText += lamp.Lbl.Text;
+		}
+
+		if (enabledText == targetText)
+		{
+			animLeft = AnimTime;
+			
+			GenerateText();
+			
+			for (int i = 0; i < 10; i++)
+			{
+				var lamp = GetNode<Lamp>("../Lamps/Lamp" + i);
+				lamp.IsLampOn = false;
+				lamp.Lbl.Text = fullText[i].ToString();
+			}
+		}
+
+		double redBlue = Math.Clamp((AnimTime - animLeft) / AnimTime, 0.0, 1.0);
+		
+		for (int i = 0; i < 10; i++)
+		{
+			var lamp = GetNode<Lamp>("../Lamps/Lamp" + i);
+			lamp.Lbl.LabelSettings.FontColor = new Color((float)redBlue, 1.0F, (float)redBlue);
+		}
+
+		animLeft -= delta;
 	}
 }

@@ -6,6 +6,26 @@ public partial class Lamp : Area2D
 	private bool _isMouseEntered = false;
 	private bool _isLampOn = false;
 
+	public bool IsLampOn
+	{
+		get => _isLampOn;
+		set
+		{
+			var sprite = GetNode<Sprite2D>("Lamp");
+			if (value)
+			{
+				sprite.Texture = GD.Load<Texture2D>("res://assets/lamp on.png");
+				this.Lbl.Hide();
+			}
+			else
+			{
+				sprite.Texture = GD.Load<Texture2D>("res://assets/lamp off.png");
+				this.Lbl.Show();
+			}
+			_isLampOn = value;
+		}
+	}
+
 	public Label Lbl { get; set; }
 
 // Called when the node enters the scene tree for the first time.
@@ -36,21 +56,7 @@ public partial class Lamp : Area2D
 	{
 		if (Input.IsActionJustPressed("mouse1"))
 		{
-			var sprite = GetNode<Sprite2D>("Lamp");
-			Texture2D image;
-			if (_isLampOn)
-			{
-				image = GD.Load<Texture2D>("res://assets/lamp off.png");
-				_isLampOn = false;
-				this.Lbl.Show();
-			}
-			else
-			{
-				image = GD.Load<Texture2D>("res://assets/lamp on.png");
-				_isLampOn = true;
-				this.Lbl.Hide();
-			}
-			sprite.Texture = image;
+			IsLampOn = !IsLampOn;
 			GD.Print(Lbl.Text);
 		}
 	}
